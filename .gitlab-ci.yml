@@ -4,6 +4,11 @@ workflow:
       when: always
 stages:
   - docker_build_test
+docker_build_test-checkout_repository:
+  image: ubuntu:latest
+  stage: docker_build_test
+  script: []
+  needs: []
 docker_build_test-execute_docker_build:
   image: ubuntu:latest
   stage: docker_build_test
