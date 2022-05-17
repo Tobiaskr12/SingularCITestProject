@@ -5,7 +5,7 @@ on:
 jobs:
   docker_build_test:
     steps:
-      - uses: "@actions/checkout@v3"
+      - uses: actions/checkout@v3
         with:
           repository: https://github.com/Tobiaskr12/SingularCITestProject
       - uses: djbender/docker-buildx-pull-or-build@v0.5
