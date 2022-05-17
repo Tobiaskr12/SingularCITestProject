@@ -5,13 +5,18 @@ on:
 jobs:
   docker_build_test:
     steps:
-      - uses: actions/checkout@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
         with:
-          repository: Tobiaskr12/SingularCITestProject
-      - uses: djbender/docker-buildx-pull-or-build@v0.5
+          username: saibotv2
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push
+        uses: docker/build-push-action@v3
         with:
-          docker_username: saibotv2
-          docker_password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: ./
-          image: singular-ci-test-project
+          push: true
+          tags: saibotv2/singular-ci-test-project:latest}
     runs-on: ubuntu-latest
