@@ -5,7 +5,7 @@ workflow:
 stages:
   - lintstage
 lintstage-execute_run_command:
-  image: ubuntu-latest
+  image: ubuntu:latest
   stage: lintstage
   script:
     - echo "Run Command executed successfully"
