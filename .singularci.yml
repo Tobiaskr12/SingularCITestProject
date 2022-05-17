@@ -4,8 +4,8 @@ pipeline:
     - GitLab
 
   variables:
-    - key: test-variable
-      value: test-value
+    - key: docker-username
+      value: saibotv2
 
   triggers: 
     trigger_types:
@@ -16,9 +16,12 @@ pipeline:
   stages:
 
     - stage:
-        name: lintstage
+        name: docker_build_test
         runs_on: ubuntu-latest
         jobs:
-          - name: execute run command
-            run: 
-              - echo "Run Command executed successfully"
+          - name: execute docker build
+            docker_build:
+              image_name: singular-ci-test-project
+              docker_file_path: ./ 
+              user_name: ${docker-username}
+              password: ${secrets.DOCKER_PASSWORD}

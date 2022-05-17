@@ -3,7 +3,12 @@ on:
     branches:
       - master
 jobs:
-  lintstage:
+  docker_build_test:
     steps:
-      - run: echo "Run Command executed successfully"
+      - uses: djbender/docker-buildx-pull-or-build@v0.5
+        with:
+          docker_username: saibotv2
+          docker_password: ${{ secrets.DOCKER_PASSWORD }}
+          dockerfile: ./
+          image: singular-ci-test-project
     runs-on: ubuntu-latest
