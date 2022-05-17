@@ -18,5 +18,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: saibotv2/singular-ci-test-project:latest}
+          tags: saibotv2/singular-ci-test-project:latest
     runs-on: ubuntu-latest
