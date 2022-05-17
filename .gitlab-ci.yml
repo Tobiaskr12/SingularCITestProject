@@ -7,5 +7,6 @@ stages:
 lintstage-execute_run_command:
   image: ubuntu-latest
   stage: lintstage
-  script: []
+  script:
+    - echo "Run Command executed successfully"
   needs: []
