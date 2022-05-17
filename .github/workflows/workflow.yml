@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: https://github.com/Tobiaskr12/SingularCITestProject
+          repository: Tobiaskr12/SingularCITestProject
       - uses: djbender/docker-buildx-pull-or-build@v0.5
         with:
           docker_username: saibotv2
