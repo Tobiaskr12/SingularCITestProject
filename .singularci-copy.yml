@@ -1,0 +1,20 @@
+pipeline:
+  targets:
+    - GitHub
+    - GitLab
+
+  triggers: 
+    trigger_types:
+      - push
+    branches:
+      - master
+  
+  stages:
+
+    - stage:
+        name: lintstage
+        runs_on: ubuntu-latest
+        jobs:
+          - name: execute run command
+            run: 
+              - echo "Run Command executed successfully"
