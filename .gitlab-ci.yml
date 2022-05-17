@@ -1,0 +1,11 @@
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+      when: always
+stages:
+  - lintstage
+lintstage-execute_run_command:
+  image: ubuntu-latest
+  stage: lintstage
+  script: []
+  needs: []

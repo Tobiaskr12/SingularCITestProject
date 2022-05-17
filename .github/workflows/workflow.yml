@@ -1,0 +1,9 @@
+on:
+  push:
+    branches:
+      - master
+jobs:
+  lintstage:
+    steps:
+      - run: echo "Run Command executed successfully"
+    runs-on: ubuntu-latest
