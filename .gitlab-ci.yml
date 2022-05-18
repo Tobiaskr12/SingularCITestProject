@@ -3,7 +3,20 @@ workflow:
     - if: $CI_PIPELINE_SOURCE == "push"
       when: always
 stages:
+  - eslint_test
   - docker_build_test
+eslint_test-Checkout_repository:
+  image: node:16
+  stage: eslint_test
+  script: []
+  needs: []
+eslint_test-install_and_run_eslint:
+  image: node:16
+  stage: eslint_test
+  script:
+    - npm install
+    - eslint .
+  needs: []
 docker_build_test-execute_docker_build:
   image: docker:latest
   stage: docker_build_test
