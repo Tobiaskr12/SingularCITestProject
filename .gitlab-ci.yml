@@ -9,8 +9,8 @@ docker_build_test-execute_docker_build:
   stage: docker_build_test
   script:
     - docker login -u saibotv2 -p $DOCKER_PASSWORD
-    - docker build -t singular-ci-test-project ./
-    - docker push saibotv2/singular-ci-test-project
+    - docker build --pull -t "singular-ci-test-project" ./
+    - docker push "singular-ci-test-project"
   needs: []
   services:
     - docker:dind
