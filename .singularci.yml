@@ -23,7 +23,7 @@ pipeline:
             checkout: Tobiaskr12/SingularCITestProject
           - name: install and run eslint
             run: 
-              - npm install
+              - npm install -g eslint
               - eslint .
 
     - stage:

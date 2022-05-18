@@ -8,13 +8,14 @@ stages:
 eslint_test-Checkout_repository:
   image: node:16
   stage: eslint_test
-  script: []
+  script:
+    - echo "Checkout task not supported for GitLab"
   needs: []
 eslint_test-install_and_run_eslint:
   image: node:16
   stage: eslint_test
   script:
-    - npm install
+    - npm install -g eslint
     - eslint .
   needs: []
 docker_build_test-execute_docker_build:
