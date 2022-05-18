@@ -25,6 +25,8 @@ docker_build_test-execute_docker_build:
     - docker login -u saibotv2 -p $DOCKER_PASSWORD
     - docker build --pull -t "saibotv2/singular-ci-test-project" ./
     - docker push "saibotv2/singular-ci-test-project"
-  needs: []
+  needs:
+    - eslint_test-Checkout_repository
+    - eslint_test-install_and_run_eslint
   services:
     - docker:dind
