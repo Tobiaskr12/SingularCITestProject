@@ -5,7 +5,7 @@ workflow:
 stages:
   - docker_build_test
 docker_build_test-execute_docker_build:
-  image: ubuntu:latest
+  image: docker:latest
   stage: docker_build_test
   script:
     - docker login -u saibotv2 -p $DOCKER_PASSWORD
