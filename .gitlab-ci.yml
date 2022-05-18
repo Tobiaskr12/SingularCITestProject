@@ -16,7 +16,7 @@ eslint_test-install_and_run_eslint:
   stage: eslint_test
   script:
     - npm install -g eslint
-    - eslint .
+    - eslint ./src
   needs: []
 docker_build_test-execute_docker_build:
   image: docker:latest

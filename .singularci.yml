@@ -24,7 +24,7 @@ pipeline:
           - name: install and run eslint
             run: 
               - npm install -g eslint
-              - eslint .
+              - eslint ./src
 
     - stage:
         name: docker_build_test

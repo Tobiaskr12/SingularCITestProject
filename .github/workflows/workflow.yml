@@ -10,7 +10,7 @@ jobs:
           repository: Tobiaskr12/SingularCITestProject
       - run: |
           npm install -g eslint
-          eslint .
+          eslint ./src
     runs-on: ubuntu-latest
     container: node:16
   docker_build_test:
