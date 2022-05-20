@@ -16,12 +16,21 @@ pipeline:
   stages:
 
     - stage:
-        name: docker_build_test
+        name: test_stages_structure_1
         runs_on: ubuntu-latest
         jobs:
-          - name: execute docker build
-            docker_build:
-              image_name: singular-ci-test-project
-              docker_file_path: ./ 
-              user_name: ${docker-username}
-              password: ${secrets.DOCKER_PASSWORD}
+          - name: run_command_1
+            run: 
+              - echo "Run command 1 executed successfully" 
+          - name: run_command_2
+            run: 
+              - echo "Run command 2 executed successfully" 
+    
+    - stage:
+        name: test_stages_structure_2
+        runs_on: ubuntu-latest
+        needs: [test_stages_structure_1]
+        jobs:
+          - name: run_command_3
+            run: 
+              - echo "Run command 3 executed successfully" 
