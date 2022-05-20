@@ -16,21 +16,12 @@ pipeline:
   stages:
 
     - stage:
-        name: test_stages_structure_1
-        runs_on: ubuntu-latest
+        name: eslint_test
+        runs_on: node:16
         jobs:
-          - name: run_command_1
+          - name: Checkout repository
+            checkout: Tobiaskr12/SingularCITestProject
+          - name: install and run eslint
             run: 
-              - echo "Run command 1 executed successfully" 
-          - name: run_command_2
-            run: 
-              - echo "Run command 2 executed successfully" 
-    
-    - stage:
-        name: test_stages_structure_2
-        runs_on: ubuntu-latest
-        needs: [test_stages_structure_1]
-        jobs:
-          - name: run_command_3
-            run: 
-              - echo "Run command 3 executed successfully" 
+              - npm install -g eslint
+              - eslint ./src

@@ -3,25 +3,17 @@ workflow:
     - if: $CI_PIPELINE_SOURCE == "push"
       when: always
 stages:
-  - test_stages_structure_1
-  - test_stages_structure_2
-test_stages_structure_1-run_command_1:
-  image: ubuntu:latest
-  stage: test_stages_structure_1
+  - eslint_test
+eslint_test-Checkout_repository:
+  image: node:16
+  stage: eslint_test
   script:
-    - echo "Run command 1 executed successfully"
+    - echo "Checkout task not supported for GitLab"
   needs: []
-test_stages_structure_1-run_command_2:
-  image: ubuntu:latest
-  stage: test_stages_structure_1
+eslint_test-install_and_run_eslint:
+  image: node:16
+  stage: eslint_test
   script:
-    - echo "Run command 2 executed successfully"
+    - npm install -g eslint
+    - eslint ./src
   needs: []
-test_stages_structure_2-run_command_3:
-  image: ubuntu:latest
-  stage: test_stages_structure_2
-  script:
-    - echo "Run command 3 executed successfully"
-  needs:
-    - test_stages_structure_1-run_command_1
-    - test_stages_structure_1-run_command_2

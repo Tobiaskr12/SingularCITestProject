@@ -3,14 +3,13 @@ on:
     branches:
       - master
 jobs:
-  test_stages_structure_1:
+  eslint_test:
     steps:
-      - run: echo "Run command 1 executed successfully"
-      - run: echo "Run command 2 executed successfully"
+      - uses: actions/checkout@v3
+        with:
+          repository: Tobiaskr12/SingularCITestProject
+      - run: |
+          npm install -g eslint
+          eslint ./src
     runs-on: ubuntu-latest
-  test_stages_structure_2:
-    steps:
-      - run: echo "Run command 3 executed successfully"
-    runs-on: ubuntu-latest
-    needs:
-      - test_stages_structure_1
+    container: node:16
