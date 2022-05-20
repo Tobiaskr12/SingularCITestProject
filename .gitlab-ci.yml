@@ -3,30 +3,10 @@ workflow:
     - if: $CI_PIPELINE_SOURCE == "push"
       when: always
 stages:
-  - eslint_test
-  - docker_build_test
-eslint_test-Checkout_repository:
-  image: node:16
-  stage: eslint_test
+  - print
+print-test_run_command:
+  image: ubuntu:latest
+  stage: print
   script:
-    - echo "Checkout task not supported for GitLab"
+    - echo "Run command executed successfully!"
   needs: []
-eslint_test-install_and_run_eslint:
-  image: node:16
-  stage: eslint_test
-  script:
-    - npm install -g eslint
-    - eslint ./src
-  needs: []
-docker_build_test-execute_docker_build:
-  image: docker:latest
-  stage: docker_build_test
-  script:
-    - docker login -u saibotv2 -p $DOCKER_PASSWORD
-    - docker build --pull -t "saibotv2/singular-ci-test-project" ./
-    - docker push "saibotv2/singular-ci-test-project"
-  needs:
-    - eslint_test-Checkout_repository
-    - eslint_test-install_and_run_eslint
-  services:
-    - docker:dind

@@ -16,24 +16,9 @@ pipeline:
   stages:
 
     - stage:
-        name: eslint_test
-        runs_on: node:16
-        jobs:
-          - name: Checkout repository
-            checkout: Tobiaskr12/SingularCITestProject
-          - name: install and run eslint
-            run: 
-              - npm install -g eslint
-              - eslint ./src
-
-    - stage:
-        name: docker_build_test
+        name: print
         runs_on: ubuntu-latest
-        needs: [eslint_test]
         jobs:
-          - name: execute docker build
-            docker_build:
-              image_name: singular-ci-test-project
-              docker_file_path: ./ 
-              user_name: ${docker-username}
-              password: ${secrets.DOCKER_PASSWORD}
+          - name: test run command
+            run: 
+              - echo "Run command executed successfully!"
