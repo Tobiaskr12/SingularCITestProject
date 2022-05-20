@@ -3,10 +3,14 @@ workflow:
     - if: $CI_PIPELINE_SOURCE == "push"
       when: always
 stages:
-  - print
-print-test_run_command:
-  image: ubuntu:latest
-  stage: print
+  - docker_build_test
+docker_build_test-execute_docker_build:
+  image: docker:latest
+  stage: docker_build_test
   script:
-    - echo "Run command executed successfully!"
+    - docker login -u saibotv2 -p $DOCKER_PASSWORD
+    - docker build --pull -t "saibotv2/singular-ci-test-project" ./
+    - docker push "saibotv2/singular-ci-test-project"
   needs: []
+  services:
+    - docker:dind

@@ -16,9 +16,13 @@ pipeline:
   stages:
 
     - stage:
-        name: print
+        name: docker_build_test
         runs_on: ubuntu-latest
+        needs: [eslint_test]
         jobs:
-          - name: test run command
-            run: 
-              - echo "Run command executed successfully!"
+          - name: execute docker build
+            docker_build:
+              image_name: singular-ci-test-project
+              docker_file_path: ./ 
+              user_name: ${docker-username}
+              password: ${secrets.DOCKER_PASSWORD}
