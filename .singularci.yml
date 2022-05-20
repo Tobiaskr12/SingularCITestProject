@@ -18,7 +18,6 @@ pipeline:
     - stage:
         name: docker_build_test
         runs_on: ubuntu-latest
-        needs: [eslint_test]
         jobs:
           - name: execute docker build
             docker_build:
