@@ -11,19 +11,19 @@ jobs:
   lint:
     steps:
       - run: git clone https://github.com/Tobiaskr12/SingularCITestProject.git
-      - run: | 
-          cd SingularCITestProject
+      - run: |
           npm install
           npm run lint
+        working-directory: SingularCITestProject
     runs-on: ubuntu-latest
     container: node:16
   test:
     steps:
       - run: git clone https://github.com/Tobiaskr12/SingularCITestProject.git
-      - run: | 
-          cd SingularCITestProject
+      - run: |
           npm install
           npm test
+        working-directory: SingularCITestProject
     runs-on: ubuntu-latest
     container: node:16
     needs:
