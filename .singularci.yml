@@ -34,7 +34,7 @@ pipeline:
     - stage:
         name: test
         needs: [lint]
-        runs_on: ubuntu-latest
+        runs_on: node:16
         jobs:
           - name: checkout repository
             checkout: 

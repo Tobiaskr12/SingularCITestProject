@@ -18,7 +18,7 @@ lint-checkout_repository:
     - npm install
     - npm run lint
 test-checkout_repository:
-  image: ubuntu:latest
+  image: node:16
   stage: test
   needs:
     - lint-checkout_repository
