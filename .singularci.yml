@@ -25,8 +25,8 @@ pipeline:
         jobs:
           - name: checkout repository
             checkout: 
-              repo_url: https://github.com/Tobiaskr12/SingularCITestProject.git
-              repo_name: SingularCITestProject
+              repo_url: https://github.com/Tobiaskr12/SingularCI.git
+              repo_name: SingularCI
             run: 
               - npm install
               - npm run lint
@@ -38,8 +38,8 @@ pipeline:
         jobs:
           - name: checkout repository
             checkout: 
-              repo_url: https://github.com/Tobiaskr12/SingularCITestProject.git
-              repo_name: SingularCITestProject
+              repo_url: https://github.com/Tobiaskr12/SingularCI.git
+              repo_name: SingularCI
             run: 
               - npm install
               - npm test

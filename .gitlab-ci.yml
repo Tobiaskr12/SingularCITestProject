@@ -12,8 +12,8 @@ lint-checkout_repository:
   stage: lint
   needs: []
   before_script:
-    - git clone https://github.com/Tobiaskr12/SingularCITestProject.git
-    - cd SingularCITestProject
+    - git clone https://github.com/Tobiaskr12/SingularCI.git
+    - cd SingularCI
   script:
     - npm install
     - npm run lint
@@ -23,8 +23,8 @@ test-checkout_repository:
   needs:
     - lint-checkout_repository
   before_script:
-    - git clone https://github.com/Tobiaskr12/SingularCITestProject.git
-    - cd SingularCITestProject
+    - git clone https://github.com/Tobiaskr12/SingularCI.git
+    - cd SingularCI
   script:
     - npm install
     - npm test
