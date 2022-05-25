@@ -13,6 +13,7 @@ jobs:
       - run: |
           git clone https://github.com/Tobiaskr12/SingularCITestProject.git
       - run: |
+          ls
           npm install
           npm run lint
     runs-on: ubuntu-latest
