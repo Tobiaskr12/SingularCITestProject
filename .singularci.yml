@@ -4,24 +4,43 @@ pipeline:
     - GitLab
 
   variables:
-    - key: docker-username
+    - key: docker_username
       value: saibotv2
+    - key: image_name
+      value: singularci-test
 
   triggers: 
     trigger_types:
       - push
+      - pull_request
     branches:
       - master
+      - main
   
   stages:
 
     - stage:
-        name: eslint_test
+        name: lint
         runs_on: node:16
         jobs:
-          - name: Checkout repository
-            checkout: Tobiaskr12/SingularCITestProject
-          - name: install and run eslint
+          - name: checkout repository
+            checkout: 
+              repo_url: https://github.com/Tobiaskr12/SingularCITestProject.git
+              repo_name: SingularCITestProject
             run: 
-              - npm install -g eslint
-              - eslint ./src
+              - npm install
+              - npm run lint
+
+    - stage:
+        name: test
+        needs: [lint]
+        runs_on: ubuntu-latest
+        jobs:
+          - name: checkout repository
+            checkout: 
+              repo_url: https://github.com/Tobiaskr12/SingularCITestProject.git
+              repo_name: SingularCITestProject
+            run: 
+              - npm install
+              - npm test
+    
