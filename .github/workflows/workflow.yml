@@ -22,7 +22,7 @@ jobs:
       - run: git clone https://github.com/Tobiaskr12/SingularCI.git
       - run: |
           npm install
-          npm test
+          npm run test
         working-directory: SingularCI
     runs-on: ubuntu-latest
     container: node:16

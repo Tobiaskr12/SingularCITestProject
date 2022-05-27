@@ -27,4 +27,4 @@ test-checkout_repository:
     - cd SingularCI
   script:
     - npm install
-    - npm test
+    - npm run test
