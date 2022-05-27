@@ -6,7 +6,8 @@ workflow:
       when: always
 stages:
   - lint
-  - test
+  - test-remote
+  - test-self
 lint-checkout_repository:
   image: node:16
   stage: lint
@@ -17,14 +18,26 @@ lint-checkout_repository:
   script:
     - npm install
     - npm run lint
-test-checkout_repository:
+test-remote-checkout_repository:
   image: node:16
-  stage: test
+  stage: test-remote
   needs:
     - lint-checkout_repository
   before_script:
     - git clone https://github.com/Tobiaskr12/SingularCI.git
     - cd SingularCI
+  script:
+    - npm install
+    - npm run test
+test-self-checkout_repository:
+  image: node:16
+  stage: test-self
+  needs:
+    - lint-checkout_repository
+    - test-remote-checkout_repository
+  before_script:
+    - git clone https://github.com/Tobiaskr12/SingularCITestProject.git
+    - cd SingularCITestProject
   script:
     - npm install
     - npm run test

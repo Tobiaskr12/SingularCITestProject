@@ -17,7 +17,7 @@ jobs:
         working-directory: SingularCI
     runs-on: ubuntu-latest
     container: node:16
-  test:
+  test-remote:
     steps:
       - run: git clone https://github.com/Tobiaskr12/SingularCI.git
       - run: |
@@ -28,3 +28,15 @@ jobs:
     container: node:16
     needs:
       - lint
+  test-self:
+    steps:
+      - run: git clone https://github.com/Tobiaskr12/SingularCITestProject.git
+      - run: |
+          npm install
+          npm run test
+        working-directory: SingularCITestProject
+    runs-on: ubuntu-latest
+    container: node:16
+    needs:
+      - lint
+      - test-remote
