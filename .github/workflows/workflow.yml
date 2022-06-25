@@ -41,6 +41,7 @@ jobs:
       - lint
   docker_build:
     steps:
+      - run: git clone https://github.com/Tobiaskr12/SingularCITestProject.git
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
