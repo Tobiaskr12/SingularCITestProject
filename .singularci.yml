@@ -46,7 +46,7 @@ pipeline:
 
     - stage:
         name: test-self
-        needs: [lint, test-remote]
+        needs: [lint]
         runs_on: node:16
         jobs:
           - name: checkout repository
@@ -56,5 +56,16 @@ pipeline:
             run: 
               - npm install
               - npm run test
-    
+
+    - stage:
+        name: docker_build
+        needs: [test-remote, test-self]
+        runs_on: ubuntu-latest
+        jobs:
+          - name: execute docker build
+            docker_build:
+              image_name: ${image_name}
+              docker_file_path: ./ 
+              user_name: ${docker_username}
+              password: ${secrets.DOCKER_PASSWORD}
     
