@@ -68,6 +68,4 @@ pipeline:
               docker_file_path: ./Dockerfile
               user_name: ${docker_username}
               password: ${secrets.DOCKER_PASSWORD}
-            
-
     
