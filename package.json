@@ -16,6 +16,6 @@
     "jest": "^28.1.0",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
-    "singularci": "1.1.12"
+    "singularci": "1.1.13"
   }
 }
