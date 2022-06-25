@@ -65,7 +65,7 @@ pipeline:
           - name: execute docker build
             docker_build:
               image_name: ${image_name}
-              docker_file_path: ./Dockerfile
+              docker_file_path: ./
               user_name: ${docker_username}
               password: ${secrets.DOCKER_PASSWORD}
     
