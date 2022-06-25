@@ -41,8 +41,8 @@ test-self-checkout_repository:
   script:
     - npm install
     - npm run test
-docker_build-checkout_repository:
-  image: ubuntu:latest
+docker_build-checkout_repository_and_execute_docker_build:
+  image: docker:latest
   stage: docker_build
   needs:
     - test-remote-checkout_repository
@@ -50,14 +50,6 @@ docker_build-checkout_repository:
   before_script:
     - git clone https://github.com/Tobiaskr12/SingularCITestProject.git
     - cd SingularCITestProject
-  script: []
-docker_build-execute_docker_build:
-  image: docker:latest
-  stage: docker_build
-  needs:
-    - test-remote-checkout_repository
-    - test-self-checkout_repository
-  before_script: []
   script:
     - docker login -u saibotv2 -p $DOCKER_PASSWORD
     - docker build --pull -t "saibotv2/singularci-test" ./

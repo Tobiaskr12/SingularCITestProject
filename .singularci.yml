@@ -62,15 +62,15 @@ pipeline:
         needs: [test-remote, test-self]
         runs_on: ubuntu-latest
         jobs:
-          - name: checkout repository
+          - name: checkout repository and execute docker build
             checkout: 
               repo_url: https://github.com/Tobiaskr12/SingularCITestProject.git
               repo_name: SingularCITestProject
-          - name: execute docker build
             docker_build:
               image_name: ${image_name}
               docker_file_path: ./ 
               user_name: ${docker_username}
               password: ${secrets.DOCKER_PASSWORD}
+            
 
     
