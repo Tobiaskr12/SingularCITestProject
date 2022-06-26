@@ -54,4 +54,3 @@ docker_build-execute_docker_build:
     - docker push "saibotv2/singularci-test"
   services:
     - docker:dind
-
